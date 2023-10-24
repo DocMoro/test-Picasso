@@ -5,9 +5,9 @@ export default function CardPost({ post }) {
   const { id } = post;
 
   return (
-    <ul className='post'>
+    <div>
       <Post post={post} />
       <ButtonCard id={id} />
-    </ul>
+    </div>
   );
 }

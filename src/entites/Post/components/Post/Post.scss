@@ -1,8 +1,8 @@
 .post {
-  position: relative;
-
   display: flex;
   flex-direction: column;
+  width: 320px;
+  height: 79px;
 
   list-style-type: none;
   padding: 0;
@@ -25,6 +25,10 @@
 
     padding-top: 6px;
     border-top: 1px solid #424242;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__container {
@@ -35,20 +39,5 @@
 
     margin-top: 14px;
     margin-bottom: 13px;
-  }
-}
-
-@media screen and (max-width: 520px) {
-  .card {
-
-    &__title {
-      font-size: 12px;
-      line-height: 15px;
-    }
-  
-    &__duration {
-      font-size: 10px;
-      line-height: 12px;
-    }
   }
 }

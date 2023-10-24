@@ -3,35 +3,11 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    column-gap: 20px;
-    row-gap: 38px;
-
-    padding: 40px 0;
-    box-sizing: border-box;
-  }
-}
-
-@media screen and (max-width: 1090px) {
-  .posts {
-    padding: 0 30px;
-
-    &__list {
-      gap: 30px;
-      min-height: calc(100vh - 673px);
-    }
-  }
-}
-
-@media screen and (max-width: 520px) {
-  .posts {
-    padding: 0 10px;
-
-    &__list {
-      gap: 34px;
-      min-height: calc(100vh - 746px);
-
-      margin: 50px 0 0;
-    }
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 30px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
   }
 }

@@ -6,7 +6,7 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
-async function getPosts() {
+async function getPosts(length, page) {
   const result = {
     hasError: false,
     errorMessage: "",
@@ -14,7 +14,7 @@ async function getPosts() {
   };
 
   try {
-    const response = await api.get("/posts");
+    const response = await api.get(`/posts?_page=${page}&_limit=${length}`);
     result.data = response.data;
   } catch(err) {
     result.hasError = true;
