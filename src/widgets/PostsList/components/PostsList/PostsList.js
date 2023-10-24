@@ -4,8 +4,8 @@ import { useState, useEffect, useCallback } from 'react';
 
 import { getPosts } from '../../api/playseholder/playseholer';
 
-import Post from '../../../../entites/Post/components/Post/Post';
-import Preloader from '../../../../features/Preloader/Preloader/components/Preloader/Preloader';
+import CardPost from '../../../../features/CardPost/components/CardPost/CardPost';
+import Preloader from '../../../../features/Preloader/components/Preloader/Preloader';
 
 export default function PostsList() {
   const [ posts, setPosts ] = useState([]);
@@ -77,7 +77,7 @@ export default function PostsList() {
         ? <Preloader />
         : <ul className='posts__list'>
             {posts.slice(0, postsLength).map((post) => (
-              <Post post={post} key={post.id}/>
+              <CardPost post={post} key={post.id}/>
             ))}
           </ul>
       }

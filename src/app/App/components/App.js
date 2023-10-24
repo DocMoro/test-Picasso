@@ -1,11 +1,12 @@
 import './App.css';
 
-import Main from '../../../pages/Main/components/Main/Main';
+import { useRoutes } from 'react-router-dom';
+import ROUTES from '../constants/constans'
 
 function App() {
-  return (
-    <Main />
-  );
+  let routes = useRoutes(ROUTES);
+
+  return routes;
 }
 
 export default App;

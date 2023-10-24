@@ -1,7 +1,7 @@
 import './Post.scss';
 
-export default function MoviesCard({ post }) {
-  const { title, body } = post;
+export default function Post({ post }) {
+  const { id, title, body } = post;
 
      /* const handleClickCreate = useCallback(() => {
     const { id, title, body } = post;
@@ -36,12 +36,12 @@ export default function MoviesCard({ post }) {
   */
 
   return (
-    <ol className='post'>
+    <>
       <div className='post__container'>
         <h3 className='post__title'>{title}</h3>
-        <button className='post__button-delete'></button>
+        <p>{id}</p>
       </div>
       <p className='post__duration'>{body}</p>
-    </ol>
+    </>
   )
 }

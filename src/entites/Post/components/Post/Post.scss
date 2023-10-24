@@ -36,51 +36,10 @@
     margin-top: 14px;
     margin-bottom: 13px;
   }
-
-  &__button-like {
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    background-color: #313131;
-
-    background-size: 9px 9px;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    border: none;
-    border-radius: 50%;
-
-    &_active {
-      
-    }
-  }
-
-  &__button-delete {
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    background-color: #313131;
-    
-    background-size: 9px 9px;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    border: none;
-    border-radius: 50%;
-    opacity: 0;
-
-    &:hover {
-      cursor: pointer;
-      opacity: 1;
-    }
-  }
 }
 
 @media screen and (max-width: 520px) {
   .card {
-    &__trailer-link {
-      height: calc(100% - 78px);
-    }
 
     &__title {
       font-size: 12px;
