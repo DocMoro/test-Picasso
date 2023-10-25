@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/test-Picasso/static/css/main.fc344953.css",
+    "main.js": "/test-Picasso/static/js/main.b7ffe9d5.js",
+    "static/js/787.7d7f8ee1.chunk.js": "/test-Picasso/static/js/787.7d7f8ee1.chunk.js",
+    "index.html": "/test-Picasso/index.html",
+    "main.fc344953.css.map": "/test-Picasso/static/css/main.fc344953.css.map",
+    "main.b7ffe9d5.js.map": "/test-Picasso/static/js/main.b7ffe9d5.js.map",
+    "787.7d7f8ee1.chunk.js.map": "/test-Picasso/static/js/787.7d7f8ee1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc344953.css",
+    "static/js/main.b7ffe9d5.js"
+  ]
+}
