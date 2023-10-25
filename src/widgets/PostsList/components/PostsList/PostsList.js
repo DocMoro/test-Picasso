@@ -1,74 +1,74 @@
 import './PostsList.scss';
 
-import { FixedSizeList as List } from 'react-window';
+import { useCallback, useEffect, useState } from 'react';
 
 import { getPosts } from '../../api/playseholder/playseholer';
-
 import CardPost from '../../../../features/CardPost/components/CardPost/CardPost';
-import InfiniteLoader from 'react-window-infinite-loader';
-
-let posts = [];
-let requestCache = {};
 
 export default function PostsList() {
-  const Row = ({ index, style }) => {
-    const post = posts[index];
-    return (
-      <div style={style}>
-        {post ? <CardPost post={post} /> : 'Loading...'}
-      </div>
-    )
-  };
+  const [currentStart, setCurrentStart] = useState(0);
+  const [isMyFetchingDown, setIsMyFetchingDown] = useState(false);
+  const [isMyFetchingUp, setIsMyFetchingUp] = useState(false);
+  const [posts, setPosts] = useState([])
 
-  const isItemLoaded = ({ index }) => !!posts[index];
+  console.log(posts)
 
-  const loadMoreItems = async (visibleStartIndex, visibleStopIndex) => {
-    const key = [visibleStartIndex, visibleStopIndex].join(':');
-    if (requestCache[key]) {
-      return;
+  const scrollHandler = e => {
+    const element = e.target.documentElement
+
+    if(element.scrollTop < 150) {
+      setIsMyFetchingUp(true);
     }
-
-    const length = visibleStopIndex - visibleStartIndex;
-    const visibleRange = [...Array(length).keys()].map(
-      x => x + visibleStartIndex
-    );
-    const itemsRetrieved = visibleRange.every(index => !!posts[index]);
-
-    if(itemsRetrieved) {
-      requestCache[key] = key;
-      return;
+    if(element.scrollHeight - element.scrollTop - window.innerHeight < 100) {
+      setIsMyFetchingDown(true);
+      window.scrollTo(0, element.scrollHeight + element.scrollTop);
     }
-    
-    renderPage(visibleStartIndex);
   }
 
-  const renderPage = async (visibleStartIndex) => {
-    const { data, hasError } = await getPosts(20, Math.floor(visibleStartIndex / 10) + 1);
+  const renderPosts = useCallback( async () => {
+    const { data, hasError } = await getPosts(currentStart, 10);
 
     if(data && !hasError) {
-      data.forEach((data) => {
-        posts[data.id - 1] = data;
-      })
+      setPosts(data);
     }
-  }
+  }, [currentStart]);
+
+  useEffect( () => {
+    renderPosts()
+  }, [renderPosts]);
+
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
+    return () => {
+      document.removeEventListener('scroll', scrollHandler);
+    }
+  }, []);
+
+  useEffect(() => {
+    if(isMyFetchingDown) {
+      setCurrentStart(prev => (
+        prev < 90 ? prev + 1 : prev
+      ))
+      setIsMyFetchingDown(false);
+    }
+  }, [isMyFetchingDown]);
+
+  useEffect(() => {
+    if(isMyFetchingUp) {
+      setCurrentStart(prev => (
+        prev > 0 ? prev - 1 : prev
+      ))
+      setIsMyFetchingUp(false);
+    }
+  }, [isMyFetchingUp]);
 
   return (
-  <InfiniteLoader
-    isItemLoaded={isItemLoaded}
-    loadMoreItems={loadMoreItems}
-    itemCount={100}
-  >
-    {({onItemsRendered, ref }) => (<List
-      height={500}
-      itemCount={100}
-      itemSize={100}
-      width={320}
-      ref={ref}
-      onItemsRendered={onItemsRendered}
-    >
-      {Row}
-    </List>
-    )}
-  </InfiniteLoader>
+    <div>
+      <ul className='post__list'>
+        {posts?.map(post => 
+          <CardPost post={post} key={post.id} />
+        )}
+      </ul>
+    </div>
   )
 }
