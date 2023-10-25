@@ -56,8 +56,8 @@ export default function PostsList() {
   }, [isMyFetchingUp]);
 
   return (
-    <div>
-      <ul className='post__list'>
+    <div className='posts'>
+      <ul className='posts__list'>
         {posts?.map(post => 
           <CardPost post={post} key={post.id} />
         )}
