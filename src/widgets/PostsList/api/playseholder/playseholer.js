@@ -7,21 +7,9 @@ const api = axios.create({
 });
 
 async function getPosts(start, length) {
-  const result = {
-    hasError: false,
-    errorMessage: "",
-    data: null,
-  };
+    const { data } = await api.get(`/posts?_start=${start}&_limit=${length}`);
 
-  try {
-    const response = await api.get(`/posts?_start=${start}&_limit=${length}`);
-    result.data = response.data;
-  } catch(err) {
-    result.hasError = true;
-    result.errorMessage = err.message || "Что-то сильно пошло не так";
-  }
-
-  return result;
+    return data;
 }
 
 export {

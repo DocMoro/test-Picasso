@@ -1,6 +1,7 @@
 import './PostsList.scss';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 import { getPosts } from '../../api/playseholder/playseholer';
 import CardPost from '../../../../features/CardPost/components/CardPost/CardPost';
@@ -9,9 +10,13 @@ export default function PostsList() {
   const [currentStart, setCurrentStart] = useState(0);
   const [isMyFetchingDown, setIsMyFetchingDown] = useState(false);
   const [isMyFetchingUp, setIsMyFetchingUp] = useState(false);
-  const [posts, setPosts] = useState([])
-
-  console.log(posts)
+  const {data: posts} = useQuery(
+    ['posts', currentStart], 
+    () => getPosts(currentStart, 10),
+    {
+      keepPreviousData: true,
+    }
+  );
 
   const scrollHandler = e => {
     const element = e.target.documentElement
@@ -24,18 +29,6 @@ export default function PostsList() {
       window.scrollTo(0, element.scrollHeight + element.scrollTop);
     }
   }
-
-  const renderPosts = useCallback( async () => {
-    const { data, hasError } = await getPosts(currentStart, 10);
-
-    if(data && !hasError) {
-      setPosts(data);
-    }
-  }, [currentStart]);
-
-  useEffect( () => {
-    renderPosts()
-  }, [renderPosts]);
 
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
