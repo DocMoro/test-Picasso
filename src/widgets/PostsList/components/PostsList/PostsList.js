@@ -24,7 +24,7 @@ export default function PostsList() {
     if(element.scrollTop < 200) {
       setIsMyFetchingUp(true);
     }
-    if(element.scrollHeight - element.scrollTop - window.innerHeight < 100) {
+    if(element.scrollHeight - element.scrollTop - window.innerHeight < 150) {
       setIsMyFetchingDown(true);
       window.scrollTo(0, element.scrollHeight + element.scrollTop);
     }
