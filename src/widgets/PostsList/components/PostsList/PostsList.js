@@ -21,7 +21,7 @@ export default function PostsList() {
   const scrollHandler = e => {
     const element = e.target.documentElement
 
-    if(element.scrollTop < 150) {
+    if(element.scrollTop < 200) {
       setIsMyFetchingUp(true);
     }
     if(element.scrollHeight - element.scrollTop - window.innerHeight < 100) {
