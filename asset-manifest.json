@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/test-Picasso/static/css/main.fc344953.css",
-    "main.js": "/test-Picasso/static/js/main.89b5801b.js",
-    "static/js/787.7d7f8ee1.chunk.js": "/test-Picasso/static/js/787.7d7f8ee1.chunk.js",
-    "index.html": "/test-Picasso/index.html",
-    "main.fc344953.css.map": "/test-Picasso/static/css/main.fc344953.css.map",
-    "main.89b5801b.js.map": "/test-Picasso/static/js/main.89b5801b.js.map",
-    "787.7d7f8ee1.chunk.js.map": "/test-Picasso/static/js/787.7d7f8ee1.chunk.js.map"
+    "main.css": "/test-picasso/static/css/main.fc344953.css",
+    "main.js": "/test-picasso/static/js/main.788f382d.js",
+    "static/js/787.7d7f8ee1.chunk.js": "/test-picasso/static/js/787.7d7f8ee1.chunk.js",
+    "index.html": "/test-picasso/index.html",
+    "main.fc344953.css.map": "/test-picasso/static/css/main.fc344953.css.map",
+    "main.788f382d.js.map": "/test-picasso/static/js/main.788f382d.js.map",
+    "787.7d7f8ee1.chunk.js.map": "/test-picasso/static/js/787.7d7f8ee1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fc344953.css",
-    "static/js/main.89b5801b.js"
+    "static/js/main.788f382d.js"
   ]
 }
