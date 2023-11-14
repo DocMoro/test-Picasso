@@ -1,1 +1,1 @@
-*Домен:* [https://docmoro.github.io/test-Picasso]
+*Домен:* [https://docmoro.github.io/test-picasso]
